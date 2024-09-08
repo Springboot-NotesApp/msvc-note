@@ -18,4 +18,15 @@ public class Note {
     private NoteStatus status;
     private LocalDateTime createdAt;
     private Optional<LocalDateTime> updatedAt;
+
+    public Note(Long id, String title, String description, NoteStatus status) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = Optional.empty();
+    }
+
+
 }

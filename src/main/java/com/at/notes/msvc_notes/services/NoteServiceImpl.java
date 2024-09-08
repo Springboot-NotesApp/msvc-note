@@ -22,4 +22,9 @@ public class NoteServiceImpl implements INoteService {
     public Note findById(Long id) {
         return repository.findById(id);
     }
+
+    @Override
+    public void create(Note note) {
+        repository.create(note);
+    }
 }
