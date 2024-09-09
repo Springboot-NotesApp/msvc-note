@@ -1,4 +1,4 @@
-package com.at.notes.msvc_notes;
+package com.at.notes.msvc_notes.config.bd;
 
 import com.mongodb.client.MongoClient;
 import org.springframework.context.annotation.Bean;
