@@ -1,35 +1,34 @@
 package com.at.notes.msvc_notes.controllers;
 
 import com.at.notes.msvc_notes.models.Note;
-import com.at.notes.msvc_notes.services.INoteService;
+import com.at.notes.msvc_notes.repository.INoteRepositoryMongoDB;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/notes")
 public class NoteController {
 
     @Autowired
-    private INoteService service;
+    private INoteRepositoryMongoDB repository;
 
-    @GetMapping("/notes")
+    @GetMapping()
     public List<Note> getNotes() {
-        return service.getAll();
+//        return service.getAll();
+        return List.of(null);
     }
 
-    @GetMapping("/notes/{id}")
+    @GetMapping("/{id}")
     public Note getNoteById(@PathVariable Long id) {
-        return service.findById(id);
+//        return service.findById(id);
+        return null;
     }
 
-    @PostMapping("/notes/create")
-    public ResponseEntity<?> create(@RequestBody() Note data) {
-        service.create(data);
-        return new ResponseEntity<String>("Created", HttpStatus.CREATED);
+    @PostMapping("/create")
+    public Note create(@RequestBody() Note note) {
+        return repository.save(note);
     }
 
 }

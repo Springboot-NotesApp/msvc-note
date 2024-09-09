@@ -1,26 +1,24 @@
 package com.at.notes.msvc_notes.repository;
 
-import com.at.notes.msvc_notes.enums.NoteStatus;
 import com.at.notes.msvc_notes.models.Note;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-@Primary
 public class NoteRepositoryImpl implements INoteRepository {
 
-    private     List<Note> notes;
+    private List<Note> notes;
 
     public NoteRepositoryImpl() {
         notes = new ArrayList<>(Arrays.asList(
-                new Note(1L, "Comprar nevera", "Comprar nevera en daka", NoteStatus.HIGH),
-                new Note(2L, "Clases", "Teleproceso II", NoteStatus.LOW),
-                new Note(1L, "Comprar regulador", "Comprar regulador en daka", NoteStatus.MEDIUM)
+                new Note(UUID.randomUUID().toString(), "Comprar nevera", "Comprar nevera en daka"),
+                new Note(UUID.randomUUID().toString(), "Clases", "Teleproceso II"),
+                new Note(UUID.randomUUID().toString(), "Comprar regulador", "Comprar regulador en daka")
         ));
     }
 
@@ -31,7 +29,8 @@ public class NoteRepositoryImpl implements INoteRepository {
 
     @Override
     public Note findById(Long id) {
-        return notes.stream().filter(note -> note.getId().equals(id)).findFirst().orElseThrow();
+//        return notes.stream().filter(note -> note.().equals(id)).findFirst().orElseThrow();
+        return null;
     }
 
     @Override

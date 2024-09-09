@@ -1,32 +1,29 @@
 package com.at.notes.msvc_notes.models;
 
 import com.at.notes.msvc_notes.enums.NoteStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Document("Notes")
 public class Note {
-    private Long id;
+    @Id
+    private String id;
     private String title;
     private String description;
-    private NoteStatus status;
-    private LocalDateTime createdAt;
-    private Optional<LocalDateTime> updatedAt;
+//    private NoteStatus status;
+//    private LocalDateTime createdAt;
+//    private Optional<LocalDateTime> updatedAt;
 
-    public Note(Long id, String title, String description, NoteStatus status) {
+    public Note(String id, String title, String description) {
+        super();
         this.id = id;
         this.title = title;
         this.description = description;
-        this.status = status;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = Optional.empty();
+//        this.status = status;
+//        this.createdAt = LocalDateTime.now();
+//        this.updatedAt = Optional.empty();
     }
-
-
 }
