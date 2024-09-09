@@ -1,18 +1,19 @@
-package com.at.notes.msvc_notes.services;
+package com.at.notes.msvc_notes.repository;
 
 import com.at.notes.msvc_notes.models.Note;
-import com.at.notes.msvc_notes.repository.INoteRepositoryMongoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class NoteServiceImpl implements INoteService {
+@Repository
+@Primary
+public class INoteRepositoryMongoImpl implements INoteRepository {
 
     @Autowired
-    private INoteRepositoryMongoImpl repository;
+    private INoteRepositoryMongoDB repository;
 
     @Override
     public List<Note> findAll() {
@@ -26,7 +27,7 @@ public class NoteServiceImpl implements INoteService {
 
     @Override
     public Note create(Note note) {
-        return repository.create(note);
+        return repository.save(note);
     }
 
     @Override
@@ -36,7 +37,6 @@ public class NoteServiceImpl implements INoteService {
 
     @Override
     public Long getNotesCount() {
-        return repository.getNotesCount();
+        return repository.count();
     }
-
 }
