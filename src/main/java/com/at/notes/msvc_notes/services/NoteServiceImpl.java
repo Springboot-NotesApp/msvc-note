@@ -34,4 +34,9 @@ public class NoteServiceImpl implements INoteService {
         repository.deleteById(id);
     }
 
+    @Override
+    public Long getNotesCount() {
+        return repository.count();
+    }
+
 }

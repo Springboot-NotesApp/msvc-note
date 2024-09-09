@@ -38,4 +38,9 @@ public class NoteController {
         return ResponseEntity.ok("Nota eliminada");
     }
 
+    @GetMapping("/total")
+    public Long getNoteCount() {
+        return service.getNotesCount();
+    }
+
 }
