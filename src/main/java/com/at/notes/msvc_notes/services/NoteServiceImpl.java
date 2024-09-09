@@ -28,4 +28,10 @@ public class NoteServiceImpl implements INoteService {
     public Note create(Note note) {
         return repository.save(note);
     }
+
+    @Override
+    public void deleteById(String id) {
+        repository.deleteById(id);
+    }
+
 }

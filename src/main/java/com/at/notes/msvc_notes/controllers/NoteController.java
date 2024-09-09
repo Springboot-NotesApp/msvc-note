@@ -1,7 +1,6 @@
 package com.at.notes.msvc_notes.controllers;
 
 import com.at.notes.msvc_notes.models.Note;
-import com.at.notes.msvc_notes.repository.INoteRepositoryMongoDB;
 import com.at.notes.msvc_notes.services.INoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +30,12 @@ public class NoteController {
     public ResponseEntity<Note> create(@RequestBody() Note note) {
         Note savedNote = service.create(note);
         return ResponseEntity.ok(savedNote);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        service.deleteById(id);
+        return ResponseEntity.ok("Nota eliminada");
     }
 
 }

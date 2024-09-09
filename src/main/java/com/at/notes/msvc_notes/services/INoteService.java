@@ -10,4 +10,5 @@ public interface INoteService {
     List<Note> findAll();
     Optional<Note> findById(String id);
     Note create(Note note);
+    void deleteById(String id);
 }
