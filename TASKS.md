@@ -1,3 +1,4 @@
+- Hacer test unitarios con mockito/junit
 - Activar los perfiles con docker
 - Cada perfil debe conectarse a su respectiva BD
 - Configurar Log4J
