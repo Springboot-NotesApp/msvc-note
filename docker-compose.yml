@@ -1,0 +1,33 @@
+# Se definen la lista de servicios
+services:
+# MongoDB, aca se define el nombre del servicio
+  mongodb:
+    # Usar ultima version de la imagen de mongo
+    image: mongo:latest
+    # Definir los puertos (Mi PC: contenedor)
+    ports:
+      - "27017:27017"
+    # Establecer ruta para la data (los documentos)
+    volumes:
+      - mongodb_data:/data/db
+
+# Aplicacion spring boot, nombre del servicio
+  msvc-notes:
+    # Aqui buscará la ruta del Dockerfile para construir la imagen del servicio msvc-notes, como esta en el mismo directorio es "."
+    build: .
+    # Los puertos de mi aplicativo backend (Mi PC: contenedor)
+    ports:
+      - "8090:8090"
+    # Depende del servicio anterior (que tiene de nombre mongodb)
+    depends_on:
+      - mongodb
+    environment:
+      # Definir string de conexion al servicio de mongodb de docker, colocamos mongodb://mongodb porque fue el nombre que se le dio al servicio
+      # mongodb://<nombre_servicio>:27017/NotesApp => mongodb://mongodb:27017/NotesApp
+      # Este nombre esta relacionado directamente con el nombre de la propiedad en el archivo .properties
+      # Solo que se cambia a mayuscula las letras y los "-" y "." se reemplazan por "_"
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/NotesApp
+
+# Definir el volumen general del servicio, usando el que se definio previamente para el servicio de mongodb
+volumes:
+  mongodb_data:
