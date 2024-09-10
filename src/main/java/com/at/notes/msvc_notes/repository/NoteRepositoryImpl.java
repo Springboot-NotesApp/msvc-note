@@ -32,4 +32,9 @@ public class NoteRepositoryImpl implements INoteRepository {
     public Long getNotesCount() {
         return 0L;
     }
+
+    @Override
+    public Note updateNote(String id, String title, String description) {
+        return null;
+    }
 }

@@ -11,4 +11,5 @@ public interface INoteService {
     Note create(Note note);
     void deleteById(String id);
     Long getNotesCount();
+    Note updateNote(String id, String title, String description);
 }

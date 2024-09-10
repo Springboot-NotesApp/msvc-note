@@ -1,6 +1,7 @@
 package com.at.notes.msvc_notes.controllers;
 
 import com.at.notes.msvc_notes.models.Note;
+import com.at.notes.msvc_notes.models.dto.NoteDto;
 import com.at.notes.msvc_notes.services.INoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,11 @@ public class NoteController {
     @GetMapping("/total")
     public Long getNoteCount() {
         return service.getNotesCount();
+    }
+
+    @PutMapping("/update/{id}")
+    public Note updateNote(@PathVariable String id, @RequestBody() NoteDto noteDto) {
+        return service.updateNote(id, noteDto.getTitle(), noteDto.getDescription());
     }
 
 }

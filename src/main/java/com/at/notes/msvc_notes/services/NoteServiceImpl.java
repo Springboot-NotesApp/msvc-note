@@ -39,4 +39,9 @@ public class NoteServiceImpl implements INoteService {
         return repository.getNotesCount();
     }
 
+    @Override
+    public Note updateNote(String id, String title, String description) {
+        return repository.updateNote(id, title, description);
+    }
+
 }
